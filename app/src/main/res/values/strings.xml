@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MyShop</string>
+    <string name="must_not_empty">Tidak boleh kosong</string>
+    <string name="choose_product">Pilih produk dahulu</string>
+    <string name="prefix_text">Rp.</string>
+    <string name="choose_product_">Pilih Produk</string>
+    <string name="menu">menu</string>
+    <string name="customer_name">Nama Pelanggan</string>
+    <string name="add">Tambah</string>
+    <string name="minus">Kurang</string>
+    <string name="qty">Qty</string>
+    <string name="price">Harga</string>
+    <string name="delete">Delete</string>
+    <string name="payment">Pembayaran</string>
+    <string name="payment_total">Total Bayar</string>
+    <string name="pay">Bayar</string>
+    <string name="change">Kembalian</string>
+    <string name="attention">Perhatian</string>
+    <string name="payment_message">Pembayaran untuk customer %1$s akan dilakukan.</string>
+    <string name="next">Lanjut</string>
+    <string name="cancel">Batal</string>
+    <string name="pay_less_than_product">Pembayaran kurang dari harga produk</string>
+    <string name="success_buying_product">Berhasil membeli produk</string>
+</resources>
