@@ -9,6 +9,8 @@ import java.util.Calendar
 import java.util.Locale
 
 object Constant {
+    const val SCAN_RESULT_CODE = 101
+
     fun getToday(): String {
         val calendar = Calendar.getInstance().time
         val df = SimpleDateFormat("EEEE, dd MMMM yyyy", Locale.getDefault())

@@ -1,5 +1,6 @@
 package com.drsync.myshop
 
+import android.content.Intent
 import android.graphics.Rect
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -108,6 +110,20 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+
+            btnScan.setOnClickListener {
+                Intent(this@MainActivity, ScanActivity::class.java).apply {
+                    launcherScanCode.launch(this)
+                }
+            }
+        }
+    }
+
+    private val launcherScanCode = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if(result.resultCode == Constant.SCAN_RESULT_CODE) {
+            //filter product by id
         }
     }
 

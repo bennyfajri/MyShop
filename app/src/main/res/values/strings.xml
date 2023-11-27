@@ -21,4 +21,6 @@
     <string name="cancel">Batal</string>
     <string name="pay_less_than_product">Pembayaran kurang dari harga produk</string>
     <string name="success_buying_product">Berhasil membeli produk</string>
+    <string name="back">Back</string>
+    <string name="scan">Scan</string>
 </resources>
