@@ -23,4 +23,8 @@
     <string name="success_buying_product">Berhasil membeli produk</string>
     <string name="back">Back</string>
     <string name="scan">Scan</string>
+    <string name="camera_rationale_message">Perizinan akses kamera diperlukan untuk scan barcode atau qrcode, Harap mengaktifkan melalui pengaturan</string>
+    <string name="ok">Ok</string>
+    <string name="camera_permission">Perizinan Kamera</string>
+    <string name="camera_permission_message">Perizinan akses kamera diperlukan</string>
 </resources>

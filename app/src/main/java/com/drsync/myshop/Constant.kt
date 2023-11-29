@@ -10,6 +10,7 @@ import java.util.Locale
 
 object Constant {
     const val SCAN_RESULT_CODE = 101
+    const val SCAN_RESULT = "ScanResult"
 
     fun getToday(): String {
         val calendar = Calendar.getInstance().time
