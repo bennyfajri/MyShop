@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.drsync.myshop.Constant.SCAN_RESULT
 import com.drsync.myshop.Constant.getArrayAdapter
 import com.drsync.myshop.Constant.getToday
 import com.drsync.myshop.Constant.listProduct
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private var qty = 0
     private var product: Product? = null
     private var productsToBuy: ArrayList<Product> = arrayListOf()
+    private var selectedProduct: Product? = null
 
     private val sheetLayout: ConstraintLayout by lazy { findViewById(R.id.sheet_layout) }
     private val etTotalPrice: TextInputEditText by lazy { sheetLayout.findViewById(R.id.et_total) }
@@ -122,8 +124,16 @@ class MainActivity : AppCompatActivity() {
     private val launcherScanCode = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        if(result.resultCode == Constant.SCAN_RESULT_CODE) {
-            //filter product by id
+        if (result.resultCode == Constant.SCAN_RESULT_CODE) {
+            val resultId = result.data?.getStringExtra(SCAN_RESULT).toString()
+            val filteredProduct = listProduct.filter { it.id.toString() == resultId }
+            if (filteredProduct.isNotEmpty()) {
+                selectedProduct = filteredProduct.first()
+                binding.etProduct.setText(selectedProduct?.name)
+            } else {
+                Toast.makeText(this@MainActivity, "Produk tidak tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
     }
 
@@ -164,15 +174,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun getUserInput() {
         binding.apply {
-            val name = etName.text.toString()
-            val product = etProduct.text.toString()
+            val customerName = etName.text.toString()
+            val productName = etProduct.text.toString()
             val qty = etQty.text.toString()
             val price = etPrice.text.toString()
 
-            if (validateInput(name, product, qty, price)) {
+            if (validateInput(customerName, productName, qty, price)) {
                 cleanInput()
+                val selectedProduct = listProduct.first { it.name == productName }.apply {
+                    this.qty = qty.toInt()
+                    customer = customerName
+                    totalPrice = price.toInt() * qty.toInt()
+                }
+
                 productsToBuy.add(
-                    Product(name, price.toInt(), qty.toInt(), price.toInt(), name)
+                    selectedProduct
                 )
                 etTotalPrice.setText(productsToBuy.getPriceTotal().toString())
                 mAdapter.submitList(productsToBuy)

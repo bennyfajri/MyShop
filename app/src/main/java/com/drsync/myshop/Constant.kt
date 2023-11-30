@@ -38,14 +38,17 @@ object Constant {
 
     val listProduct = listOf(
         Product(
+            1,
             "Mouse",
             30000
         ),
         Product(
+            2,
             "Keyboard",
             60000
         ),
         Product(
+            3,
             "Web Cam",
             300000
         ),
