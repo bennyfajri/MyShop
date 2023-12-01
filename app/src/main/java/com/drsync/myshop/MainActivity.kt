@@ -14,6 +14,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drsync.myshop.Constant.SCAN_RESULT
 import com.drsync.myshop.Constant.getArrayAdapter
+import com.drsync.myshop.Constant.getPriceTotal
 import com.drsync.myshop.Constant.getToday
 import com.drsync.myshop.Constant.listProduct
 import com.drsync.myshop.Constant.setInputError
@@ -140,7 +141,7 @@ class MainActivity : AppCompatActivity() {
     private fun cleanAllItem() {
         MaterialAlertDialogBuilder(this@MainActivity)
             .setTitle(getString(R.string.attention))
-            .setMessage(getString(R.string.payment_message, productsToBuy.first().name))
+            .setMessage(getString(R.string.payment_message, productsToBuy.first().customer))
             .setPositiveButton(getString(R.string.next)) { dialog, _ ->
                 Toast.makeText(
                     this@MainActivity,
@@ -194,12 +195,6 @@ class MainActivity : AppCompatActivity() {
                 mAdapter.submitList(productsToBuy)
                 setRecyclerView()
             }
-        }
-    }
-
-    private fun List<Product>.getPriceTotal(): Number {
-        return this.sumOf {
-            ((it.totalPrice?.times(it.qty!!)) ?: 0)
         }
     }
 

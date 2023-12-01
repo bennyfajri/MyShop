@@ -36,6 +36,12 @@ object Constant {
         return rupiahsFormat.format(this)
     }
 
+    fun List<Product>.getPriceTotal(): Number {
+        return this.sumOf {
+            it.totalPrice ?: 0
+        }
+    }
+
     val listProduct = listOf(
         Product(
             1,
@@ -51,6 +57,16 @@ object Constant {
             3,
             "Web Cam",
             300000
+        ),
+        Product(
+            8996006856197,
+            "TehBotol Kotak Less Sugar",
+            3500
+        ),
+        Product(
+            8992759184013,
+            "Tissue Jolly",
+            4500
         ),
     )
 
